@@ -35,7 +35,7 @@ public class SerializalizingAndDeserializingBinaryTree {
         t2.root = t2.insertLevelOrder(arr, t2.root, 0);
         t2.inOrder(t2.root);
         serialize(t2.root,array);
-        System.out.println(array);
+        System.out.println("Serialized Array :"+array);
         t2.inOrder(deserialize(array));
     }
 }

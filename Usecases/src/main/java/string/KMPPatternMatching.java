@@ -28,7 +28,6 @@ public class KMPPatternMatching {
     while(i< text.length && j < pattern.length){
         if(text[i]== pattern[j]){
             i++;
-            System.out.println(i);
             j++;
         }else {
             if(j!=0){

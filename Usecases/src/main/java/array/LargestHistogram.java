@@ -4,35 +4,29 @@ import java.util.Stack;
 
 public class LargestHistogram {
 
-    public static int maxHistogramArea(int arr[]){
+    public static int maxHistogramArea(int[] arr) {
         int maxArea = 0;
-        int area = 0;
+        int area = 0, top;
         int i;
         Stack<Integer> s = new Stack<>();
-        for(i = 0;i<arr.length;){
-            if(s.isEmpty() || arr[s.peek()]<arr[i]){
+        for (i = 0; i < arr.length; ) {
+            if (s.empty() || arr[s.peek()] <= arr[i]) {
                 s.push(i++);
             } else {
-                int top = s.pop();
-                if(s.isEmpty()){
-                    area = arr[top] * i;
-                }else {
-                    area = top * (i - s.peek() - 1);
-                }
-                if(area > maxArea){
+                top = s.peek();
+                s.pop();
+                area = arr[top] * (s.empty() ? i : i - s.peek() - 1);
+                if (area > maxArea) {
                     maxArea = area;
                 }
 
-        }
-    }
-        while(!s.isEmpty()){
-            int top = s.pop();
-            if(s.isEmpty()){
-                area = arr[top] * i;
-            }else {
-                area = top * (i - s.peek() - 1);
             }
-            if(area > maxArea){
+        }
+        while (s.empty() == false) {
+            top = s.peek();
+            s.pop();
+            area = arr[top] * (s.empty() ? i : i - s.peek() - 1);
+            if (area > maxArea) {
                 maxArea = area;
             }
         }
@@ -40,7 +34,7 @@ public class LargestHistogram {
     }
 
     public static void main(String[] args) {
-        int arr[] = {2,1,2};
+        int[] arr = {6, 2, 5, 4, 5, 1, 6};
         System.out.println(maxHistogramArea(arr));
     }
 }

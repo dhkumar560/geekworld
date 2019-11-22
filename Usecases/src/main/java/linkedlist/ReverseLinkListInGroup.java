@@ -41,6 +41,9 @@ public class ReverseLinkListInGroup {
         while (currNode != null) {
             System.out.print(currNode.data + " ");
             currNode = currNode.next;
+            if(currNode!=null){
+                System.out.print("-->");
+            }
         }
     }}
 class Node {
